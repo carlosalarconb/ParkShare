@@ -119,7 +119,7 @@ public class RentalService : IRentalService
             }
             // Potentially add time-based cancellation policies (e.g., cannot cancel 1 hour before start)
         }
-        
+
         rental.Status = statusDto.Status;
         // Consider adding an UpdatedAtUtc field to Rental entity and set it here
         // rental.UpdatedAtUtc = DateTime.UtcNow;

@@ -1,0 +1,159 @@
+# Standard .NET Core .gitignore file
+
+## Build Folders (you can customize this if you have different build folder names)
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio Code Folders
+.vscode/
+
+## Rider Folders
+.idea/
+
+## User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+Build/
+buildOut/
+BuildOut/
+
+## IDE Cache Files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.cache
+
+## Visual Studio Test Files
+*.vsmdi
+*.testsettings
+
+## Miscellaneous
+*.DS_Store
+Thumbs.db
+
+## Environment files
+.env
+*.env
+
+## Secrets files (if you use user secrets)
+secrets.json
+
+## Local Databases (SQLite example, adjust if needed)
+*.db
+*.db-shm
+*.db-wal
+# parkshare.db # Specifically for this project if it's always local/dev
+# parkshare_dev.db
+
+## EF Core Migrations (if you don't want to commit them, though often they are)
+# Migrations/ # Uncomment if you prefer not to commit migrations
+
+## Rider specific
+*.ReSharper.user
+*.ReSharperUserFile
+
+## Coverlet coverage results
+coverage.json
+coverage.cobertura.xml
+coverage.opencover.xml
+coverage.lcov
+
+## Paket files
+.paket/paket.exe
+paket-files/
+
+## FAKE build script files
+.fake/
+
+## PowerShell module files
+*.psd1
+*.psm1
+
+# Cache files
+*.nupkg
+# Stores files used by Visual Studio to restore packages
+project.lock.json
+project.assets.json # Often committed, but can be gitignored in some workflows
+packages/
+
+# Created by dotnet-ef tools
+# *.Contexts # if you have multiple DB contexts in different folders
+
+# Add any other files/folders you want to ignore
+# For example, if you have log files:
+# *.log
+# logs/
+
+# Rider Code Coverage
+# **/*.coverage.html
+# **/*.dcvr
+
+# Dotnet User Secrets
+**/secrets.json # For user secrets, ensure this is not committed if it contains real secrets.
+# Typically UserSecretsId in .csproj handles this without committing the actual secrets file.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# If you're using Docker
+docker-compose.override.yml
+docker-compose.vs.debug.g.yml
+docker-compose.vs.release.g.yml
+.dockerignore
+
+# If you're using Azure Functions
+bin/
+obj/
+extensions.csproj
+launch.json
+local.settings.json # This often contains connection strings, so be careful.
+Host.StartupType # Rider specific for Azure Functions
+
+# If you're using NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# If you're using SpecFlow
+*.feature.cs
+
+# If you're using Nuke
+.nuke/build.schema.json
+.nuke/temp/
+
+# If you're using stryker-mutator
+.stryker-tmp/
+
+# If you're using BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# If you're using Avalonia UI
+**/App.xaml.cs.Snapshot
+
+# If you're using Uno Platform
+**/*.Generated.cs
+**/*.g.cs
+**/*.g.i.cs
+
+# Output files from JetBrains Rider test runner
+**/*.testadapter.logpath
+
+# Output files from running `dotnet test`
+TestResults/

@@ -40,8 +40,8 @@ public class ParkShareDbContext : DbContext
             entity.Property(p => p.HourlyRate).HasColumnType("decimal(18,2)");
 
             // Relationship with User (Owner)
-            entity.HasOne<User>() 
-                  .WithMany() 
+            entity.HasOne<User>()
+                  .WithMany()
                   .HasForeignKey(p => p.OwnerId)
                   .IsRequired();
 
@@ -49,7 +49,7 @@ public class ParkShareDbContext : DbContext
             entity.HasMany(p => p.Availabilities) // Uses the ICollection<Availability> in ParkingLot
                   .WithOne() // Assumes Availability does not have a navigation property back to ParkingLot, or it's not configured here
                   .HasForeignKey(a => a.ParkingLotId)
-                  .OnDelete(DeleteBehavior.Cascade); 
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         // Rental Configuration
@@ -62,19 +62,19 @@ public class ParkShareDbContext : DbContext
                   .HasConversion(
                       s => s.ToString(),
                       s => (RentalStatus)Enum.Parse(typeof(RentalStatus), s))
-                  .HasMaxLength(50); 
+                  .HasMaxLength(50);
 
-            entity.HasOne<ParkingLot>() 
-                  .WithMany() 
+            entity.HasOne<ParkingLot>()
+                  .WithMany()
                   .HasForeignKey(r => r.ParkingLotId)
                   .IsRequired()
-                  .OnDelete(DeleteBehavior.Restrict); 
+                  .OnDelete(DeleteBehavior.Restrict);
 
-            entity.HasOne<User>() 
-                  .WithMany() 
+            entity.HasOne<User>()
+                  .WithMany()
                   .HasForeignKey(r => r.RenterId)
                   .IsRequired()
-                  .OnDelete(DeleteBehavior.Restrict); 
+                  .OnDelete(DeleteBehavior.Restrict);
         });
 
         // Availability Configuration

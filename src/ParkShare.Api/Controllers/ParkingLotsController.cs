@@ -83,12 +83,12 @@ public class ParkingLotsController : ControllerBase
     public async Task<IActionResult> AddAvailability(Guid parkingLotId, [FromBody] AvailabilityDto availabilityDto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
-        var ownerId = GetUserId(); 
+        var ownerId = GetUserId();
         // Ensure the caller owns the parkingLotId - service method should check this
         var success = await _parkingLotService.AddAvailabilityAsync(parkingLotId, availabilityDto, ownerId);
         if (!success) return Conflict("Could not add availability. Ensure parking lot exists and you are the owner.");
         // Consider returning the created availability or a link to it.
-        return Ok("Availability added."); 
+        return Ok("Availability added.");
     }
 
     [HttpGet("{parkingLotId:guid}/availability")]

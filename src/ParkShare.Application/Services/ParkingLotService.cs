@@ -90,7 +90,7 @@ public class ParkingLotService : IParkingLotService
             return false; // Or throw ArgumentException
         }
         var parkingLot = await _dbContext.ParkingLots
-                                         .Include(p => p.Availabilities) 
+                                         .Include(p => p.Availabilities)
                                          .FirstOrDefaultAsync(p => p.Id == id && p.OwnerId == ownerGuid); // Use parsed Guid
 
         if (parkingLot == null) return false;
@@ -104,7 +104,7 @@ public class ParkingLotService : IParkingLotService
         if (updateDto.HourlyRate.HasValue) parkingLot.HourlyRate = updateDto.HourlyRate.Value;
         if (updateDto.Description != null) parkingLot.Description = updateDto.Description;
         if (updateDto.IsActive.HasValue) parkingLot.IsActive = updateDto.IsActive.Value;
-        
+
         parkingLot.UpdatedAtUtc = DateTime.UtcNow;
 
         _dbContext.ParkingLots.Update(parkingLot);
@@ -131,7 +131,7 @@ public class ParkingLotService : IParkingLotService
             return false; // Or throw ArgumentException
         }
         var parkingLot = await _dbContext.ParkingLots.FirstOrDefaultAsync(p => p.Id == parkingLotId && p.OwnerId == ownerGuid); // Use parsed Guid
-        if (parkingLot == null) return false; 
+        if (parkingLot == null) return false;
 
         var availability = new Availability
         {
@@ -142,7 +142,7 @@ public class ParkingLotService : IParkingLotService
             EndTime = availabilityDto.EndTime,
             IsAvailable = availabilityDto.IsAvailable
         };
-        
+
         _dbContext.Availabilities.Add(availability);
         return await _dbContext.SaveChangesAsync() > 0;
     }

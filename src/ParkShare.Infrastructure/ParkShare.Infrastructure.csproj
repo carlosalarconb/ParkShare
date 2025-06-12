@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\ParkShare.Application\ParkShare.Application.csproj" />
+    <!-- <ProjectReference Include="..\ParkShare.Application\ParkShare.Application.csproj" /> --> <!-- Removed to break circular dependency -->
     <ProjectReference Include="..\ParkShare.Core\ParkShare.Core.csproj" />
   </ItemGroup>
 

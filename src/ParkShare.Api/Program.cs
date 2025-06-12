@@ -44,7 +44,7 @@ builder.Services.AddSwaggerGen(options =>
 
 // ** START AUTH CONFIGURATION **
 // 1. Configure JWT Settings
-var jwtSettings = new JwtSettings(); 
+var jwtSettings = new JwtSettings();
 builder.Configuration.GetSection("Jwt").Bind(jwtSettings);
 builder.Services.AddSingleton(jwtSettings); // Make JwtSettings available for DI if needed elsewhere, or configure IOptions<JwtSettings>
 
@@ -52,14 +52,14 @@ builder.Services.AddSingleton(jwtSettings); // Make JwtSettings available for DI
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 .AddGoogle(options =>
 {
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!; 
+    options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
     options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
-    options.CallbackPath = "/signin-google"; 
-    // options.SaveTokens = true; 
+    options.CallbackPath = "/signin-google";
+    // options.SaveTokens = true;
 })
 .AddJwtBearer(options =>
 {
@@ -69,8 +69,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings.Issuer, 
-        ValidAudience = jwtSettings.Audience, 
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key ?? "INVALID_KEY_FALLBACK"))
     };
 });

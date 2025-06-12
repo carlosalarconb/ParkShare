@@ -17,7 +17,7 @@ namespace ParkShare.Application.Services;
 public class AuthService : IAuthService
 {
     private readonly ParkShareDbContext _dbContext;
-    private readonly IConfiguration _configuration; 
+    private readonly IConfiguration _configuration;
 
     public AuthService(ParkShareDbContext dbContext, IConfiguration configuration)
     {
@@ -48,7 +48,7 @@ public class AuthService : IAuthService
             bool updated = false;
             if (user.FirstName != googleUserInfo.FirstName) { user.FirstName = googleUserInfo.FirstName; updated = true; }
             if (user.LastName != googleUserInfo.LastName) { user.LastName = googleUserInfo.LastName; updated = true; }
-            
+
             if (updated)
             {
                 await _dbContext.SaveChangesAsync();
@@ -85,9 +85,9 @@ public class AuthService : IAuthService
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id), 
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) 
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
         var token = new JwtSecurityToken(
