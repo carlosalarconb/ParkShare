@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
     {
         var properties = new AuthenticationProperties { RedirectUri = Url.Action(nameof(GoogleLoginCallback)) };
         // If you need to pass the returnUrl through the external login process:
-        // properties.Items["returnUrl"] = returnUrl; 
+        // properties.Items["returnUrl"] = returnUrl;
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
 
@@ -59,7 +59,7 @@ public class AuthController : ControllerBase
 
         var userDto = await _authService.GetOrCreateUserAsync(googleUserInfo);
         var token = _authService.GenerateJwtToken(userDto);
-        
+
         // For a web app, you might redirect with the token or set a cookie.
         // For an API consumed by a SPA or mobile app, returning the token is common.
         return Ok(new { Token = token, User = userDto });

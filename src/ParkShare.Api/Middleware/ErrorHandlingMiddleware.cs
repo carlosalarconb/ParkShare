@@ -60,7 +60,7 @@ public class ErrorHandlingMiddleware
             //     responsePayload = new { statusCode = context.Response.StatusCode, message = notFoundEx.Message };
             //     break;
             default:
-                responsePayload = new 
+                responsePayload = new
                 {
                     statusCode = context.Response.StatusCode,
                     message = "An internal server error occurred. Please try again later.",
@@ -68,10 +68,10 @@ public class ErrorHandlingMiddleware
                 };
                 break;
         }
-        
+
         // Example of providing more details in development (requires IWebHostEnvironment)
         // var env = context.RequestServices.GetRequiredService<IWebHostEnvironment>();
-        // if (env.IsDevelopment() && !(exception is ArgumentException || exception is InvalidOperationException)) 
+        // if (env.IsDevelopment() && !(exception is ArgumentException || exception is InvalidOperationException))
         // {
         //     // For general errors in dev, show more details. For specific handled ones, the message above is likely enough.
         //     responsePayload = new { statusCode = context.Response.StatusCode, message = exception.Message, details = exception.StackTrace };

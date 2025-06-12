@@ -20,7 +20,7 @@ public class RentalsController : ControllerBase
     {
         _rentalService = rentalService;
     }
-    
+
     private string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue("sub") ?? throw new UnauthorizedAccessException("User ID not found in token.");
 
     [HttpPost]
@@ -73,7 +73,7 @@ public class RentalsController : ControllerBase
     public async Task<IActionResult> UpdateRentalStatus(Guid id, [FromBody] UpdateRentalStatusDto statusDto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
-        
+
         // Add authorization: Who can update status? Renter for cancellation? Owner for other changes?
         // For now, keeping it simple. Service layer has basic validation.
         var success = await _rentalService.UpdateRentalStatusAsync(id, statusDto);
